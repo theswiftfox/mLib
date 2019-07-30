@@ -1,3 +1,17 @@
+Changes from theswiftfox
+-------------------------
+Updated mLib to work with MSVC v140
+
+To fix build you have to make a small change to a header from mLibExternal!
+From stackoverflow:
+I ran into this myself, turned out to be a bug in Eigen. In my case, just replacing the following line in src/Eigen/Eigen/src/Core/util/Macros.h
+#if defined(_MSC_VER) && (!defined(__INTEL_COMPILER))
+with 
+#if defined(_MSC_VER) && (_MSC_VER < 1900) && (!defined(__INTEL_COMPILER))
+solved this issue. The assignment operators are then generated.
+
+Original Readme:
+-------------------------
 mLib is a library to support research projects, and has been used in a large number of publications. 
 You are free to use this code with proper attribution in non-commercial applications (Please see LICENSE.txt).
 For the possibilities of commercial use, please contact the authors.

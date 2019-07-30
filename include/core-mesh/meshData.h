@@ -540,7 +540,7 @@ public:
 	}
 
 	//! merges two meshes (assumes the same memory layout/type)
-	void merge(const MeshData<FloatType>& other);
+	void merge(MeshData<FloatType>& other);
 	unsigned int removeDuplicateVertices();
 	unsigned int removeDuplicateFaces();
 	unsigned int mergeCloseVertices(FloatType thresh, bool approx = false);

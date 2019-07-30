@@ -566,13 +566,13 @@ unsigned int MeshData<FloatType>::removeFacesInFrontOfPlane( const Plane<FloatTy
 
 
 template <class FloatType>
-void MeshData<FloatType>::merge( const MeshData<FloatType>& other )
+void MeshData<FloatType>::merge(MeshData<FloatType>& other )
 {
     if (other.isEmpty()) {
         return;
     }
 	if (isEmpty()) {
-		*this = other;
+		*this = std::move(other);
 		return;
 	}
 
